@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "261504457811",
+    "firebase_url": "https://newlinefood-default-rtdb.firebaseio.com",
+    "project_id": "newlinefood",
+    "storage_bucket": "newlinefood.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:261504457811:android:8b85970c6b050edbf63aa6",
+        "android_client_info": {
+          "package_name": "br.com.newlinefood"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "261504457811-29k7ms3hf2e32ja38ujjl4lgju9idik9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.newlinefood",
+            "certificate_hash": "ee804403f2daf0830799c6f7484bcf917c0f8bd1"
+          }
+        },
+        {
+          "client_id": "261504457811-06h6kr8k7govmr1csk040hbfv5ncfbsr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCioNo7XnPAJdpfS1Jkn6UrZernyntdRvQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "261504457811-06h6kr8k7govmr1csk040hbfv5ncfbsr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

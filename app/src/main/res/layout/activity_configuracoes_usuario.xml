@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".activity.ConfiguracoesUsuarioActivity">
+
+    <include
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="2000">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="-2dp"
+            android:layout_marginBottom="12dp"
+            android:fontFamily="@font/montserratmedium"
+            android:text="Digite o nome completo:"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/edtNome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nome completo"
+            android:layout_margin="-2dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/bg_edit_text"
+            android:padding="16dp"
+            android:ems="10"
+            android:fontFamily="@font/montserratregular"
+            android:inputType="text" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="-2dp"
+            android:layout_marginBottom="12dp"
+            android:fontFamily="@font/montserratmedium"
+            android:text="Digite a data de nascimento:"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/edtData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Digite a data de nascimento"
+            android:layout_margin="-2dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/bg_edit_text"
+            android:padding="16dp"
+            android:ems="10"
+            android:fontFamily="@font/montserratregular"
+            android:inputType="number" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="-2dp"
+            android:layout_marginBottom="12dp"
+            android:fontFamily="@font/montserratmedium"
+            android:text="Digite o CEP:"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/edtCEP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Digite o CEP"
+            android:layout_margin="-2dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/bg_edit_text"
+            android:fontFamily="@font/montserratregular"
+            android:padding="16dp"
+            android:ems="10"
+            android:inputType="number" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="-2dp"
+            android:layout_marginBottom="12dp"
+            android:fontFamily="@font/montserratmedium"
+            android:text="Digite o endereço:"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/edtEndereco"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Digite o endereço"
+            android:layout_margin="-2dp"
+            android:background="@drawable/bg_edit_text"
+            android:fontFamily="@font/montserratregular"
+            android:padding="16dp"
+            android:layout_marginBottom="12dp"
+            android:ems="10"
+            android:inputType="text" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="-2dp"
+            android:layout_marginBottom="12dp"
+            android:fontFamily="@font/montserratmedium"
+            android:text="Digite o número:"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/edtNumero"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Digite o número"
+            android:layout_margin="-2dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/bg_edit_text"
+            android:fontFamily="@font/montserratregular"
+            android:padding="16dp"
+            android:ems="10"
+            android:inputType="number" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="-2dp"
+            android:layout_marginBottom="12dp"
+            android:fontFamily="@font/montserratmedium"
+            android:text="Digite o bairro:"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/edtBairro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Digite o bairro"
+            android:layout_margin="-2dp"
+            android:background="@drawable/bg_edit_text"
+            android:fontFamily="@font/montserratregular"
+            android:padding="16dp"
+            android:ems="10"
+            android:inputType="text" />
+
+        <Button
+            android:id="@+id/buttonSalvar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:layout_marginTop="12dp"
+            android:text="Salvar"
+            android:fontFamily="@font/montserratsemibold"
+            android:onClick="validarDadosUsuario"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>
