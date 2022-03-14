@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,9 +21,14 @@ import com.squareup.picasso.Picasso;
 import br.com.newlinefood.R;
 import br.com.newlinefood.helper.ConfiguracaoFirebase;
 import br.com.newlinefood.helper.UsuarioFirebase;
+import br.com.newlinefood.model.CEP;
 import br.com.newlinefood.model.Empresa;
 import br.com.newlinefood.model.Usuario;
+import br.com.newlinefood.service.RetrofitConfig;
 import br.com.newlinefood.util.MaskEditUtil;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ConfiguracoesUsuarioActivity extends AppCompatActivity {
 
@@ -41,6 +49,41 @@ public class ConfiguracoesUsuarioActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         inicializarComponentes();
+
+        edtCEP.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (editable.toString().length() == 8) {
+                    Call<CEP> call = new RetrofitConfig().getCEPService().buscarCEP(edtCEP.getText().toString());
+                    call.enqueue(new Callback<CEP>() {
+                        @Override
+                        public void onResponse(Call<CEP> call, Response<CEP> response) {
+                            CEP cep = response.body();
+                            edtEndereco.setText(cep.getLogradouro());
+                            edtBairro.setText(cep.getBairro());
+                            edtCEP.setText(cep.getCep());
+                        }
+
+                        @Override
+                        public void onFailure(Call<CEP> call, Throwable t) {
+                            Log.e("CEPService   ", "Erro ao buscar o cep:" + t.getMessage());
+                        }
+                    });
+                }
+            }
+        });
+
+
         edtData.addTextChangedListener(MaskEditUtil.mask(edtData, MaskEditUtil.FORMAT_DATE));
 
         databaseReference = ConfiguracaoFirebase.getFirebase();
@@ -55,7 +98,7 @@ public class ConfiguracoesUsuarioActivity extends AppCompatActivity {
         empresaRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.getValue() != null){
+                if (dataSnapshot.getValue() != null) {
                     Usuario usuario = dataSnapshot.getValue(Usuario.class);
                     edtNome.setText(usuario.getNome());
                     edtEndereco.setText(usuario.getEndereco());
@@ -73,7 +116,7 @@ public class ConfiguracoesUsuarioActivity extends AppCompatActivity {
         });
     }
 
-    public void validarDadosUsuario (View view){
+    public void validarDadosUsuario(View view) {
         String nome = edtNome.getText().toString();
         String endereco = edtEndereco.getText().toString();
         String cep = edtCEP.getText().toString();
@@ -81,12 +124,12 @@ public class ConfiguracoesUsuarioActivity extends AppCompatActivity {
         String bairro = edtBairro.getText().toString();
         String data = edtData.getText().toString();
 
-        if (!nome.isEmpty()){
-            if (!cep.isEmpty()){
-                if (!numero.isEmpty()){
-                    if (!bairro.isEmpty()){
-                        if (!data.isEmpty()){
-                            if (!endereco.isEmpty()){
+        if (!nome.isEmpty()) {
+            if (!cep.isEmpty()) {
+                if (!numero.isEmpty()) {
+                    if (!bairro.isEmpty()) {
+                        if (!data.isEmpty()) {
+                            if (!endereco.isEmpty()) {
                                 Usuario usuario = new Usuario();
                                 usuario.setIdUsuario(idUsuarioLogado);
                                 usuario.setNome(nome);
@@ -101,16 +144,16 @@ public class ConfiguracoesUsuarioActivity extends AppCompatActivity {
                             } else {
                                 exibirMensagem("Digite seu endereço completo!");
                             }
-                        }else{
+                        } else {
                             exibirMensagem("Digite a data de nascimento!");
                         }
-                    } else{
+                    } else {
                         exibirMensagem("Digite seu bairro!");
                     }
-                }else{
+                } else {
                     exibirMensagem("Digite o numero");
                 }
-            } else{
+            } else {
                 exibirMensagem("Digite o cep");
             }
         } else {
@@ -119,8 +162,8 @@ public class ConfiguracoesUsuarioActivity extends AppCompatActivity {
 
     }
 
-    public void exibirMensagem (String texto){
-        Toast.makeText( this,
+    public void exibirMensagem(String texto) {
+        Toast.makeText(this,
                 texto,
                 Toast.LENGTH_SHORT).show();
     }
