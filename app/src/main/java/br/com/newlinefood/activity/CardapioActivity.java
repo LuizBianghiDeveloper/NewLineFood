@@ -271,7 +271,7 @@ public class CardapioActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Selecione um método de pagamento");
         CharSequence[] itens = new CharSequence[]{
-            "Dinheiro", "Máquina de cartão"
+                "Pix", "Dinheiro", "Máquina de cartão"
         };
         builder.setSingleChoiceItems(itens, 0, new DialogInterface.OnClickListener() {
             @Override
